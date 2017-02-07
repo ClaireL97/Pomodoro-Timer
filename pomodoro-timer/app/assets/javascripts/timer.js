@@ -1,21 +1,26 @@
 function jsTimer(minutes, seconds) {
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  document.getElementById("countdown").innerHTML = `${minutes}: ${seconds}`;
+  updateTime();
 
   function display(){
-    resetSeconds();
-    seconds -= 1;
-
-    //Change single digits to double digits
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    minutes = parseInt(minutes, 10);
+    seconds--;
 
     if (timerIsDone()) {
       document.getElementById("countdown").innerHTML = `Time to take a break!`;
       clearInterval(timer);
       return
     };
+    updateTime();
+  }
+
+  function updateTime() {
+    resetSeconds();
+    doubleDigitSeconds();
+    minutes = parseInt(minutes, 10);
     document.getElementById("countdown").innerHTML = `${minutes}: ${seconds}`;
+  }
+
+  function doubleDigitSeconds() {
+    seconds = seconds < 10 ? "0" + seconds : seconds
   }
 
   function resetSeconds() {
@@ -31,5 +36,3 @@ function jsTimer(minutes, seconds) {
 
   var timer = window.setInterval(function(){ display() },1000);
 }
-
-jsTimer(0, 5)
