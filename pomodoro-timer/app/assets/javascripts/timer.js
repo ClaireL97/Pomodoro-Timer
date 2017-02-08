@@ -2,33 +2,39 @@ var timer;
 
 $(document).ready(function(){
   createNewTimer();
+
+  $("#start-btn").on('click', function(event) {
+    event.preventDefault();
+    timer.interval = window.setInterval( function(){ timer.display(); }, 10);
+    timer.updateTime();
+    $("#start-btn").hide();
+    $("#reset-btn").show();
+    $("#pause-btn").show();
+  });
+
+  $("#pause-btn").on('click', function() {
+    event.preventDefault();
+    timer.isPaused = true;
+    $("#pause-btn").hide();
+    $("#resume-btn").show();
+  });
+
+  $("#resume-btn").on('click', function() {
+    event.preventDefault();
+    timer.isPaused = false;
+    $("#pause-btn").show();
+    $("#resume-btn").hide();
+  });
+
+  $("#reset-btn").on('click', function() {
+    event.preventDefault();
+    clearInterval(timer.interval);
+    $("input").hide();
+    createNewTimer();
+  });
 });
 
-$("#start-btn").on('click', function() {
-  timer.interval = window.setInterval( function(){ timer.display(); }, 10);
-  timer.updateTime();
-  $("#start-btn").hide();
-  $("#reset-btn").show();
-  $("#pause-btn").show();
-});
 
-$("#pause-btn").on('click', function() {
-  timer.isPaused = true;
-  $("#pause-btn").hide();
-  $("#resume-btn").show();
-});
-
-$("#resume-btn").on('click', function() {
-  timer.isPaused = false;
-  $("#pause-btn").show();
-  $("#resume-btn").hide();
-});
-
-$("#reset-btn").on('click', function() {
-  clearInterval(timer.interval);
-  $("input").hide();
-  createNewTimer();
-});
 
 var jsTimer = function(minutes, seconds) {
   this.interval;
@@ -50,7 +56,7 @@ jsTimer.prototype.resetSeconds = function() {
 };
 
 jsTimer.prototype.timerIsDone = function () {
-  return this.seconds === 0 && this.minutes === 0;
+  return this.seconds === "00" && this.minutes === "00" && this.centiseconds === 0;
 };
 
 jsTimer.prototype.updateTime = function() {
@@ -67,6 +73,7 @@ jsTimer.prototype.display = function(){
     if (this.timerIsDone()) {
       document.getElementById("countdown").innerHTML = `Time to take a break!`;
       clearInterval(this.interval);
+      $("#pause-btn").hide();
       return;
     }
     this.updateTime();
@@ -78,7 +85,7 @@ function doubleDigitify(number) {
 };
 
 function createNewTimer() {
-  timer = new jsTimer(25, 0);
-  document.getElementById("countdown").innerHTML = `25:00.00`;
+  timer = new jsTimer(0, 3);
+  document.getElementById("countdown").innerHTML = `00:03.00`;
   $("#start-btn").show();
 }
