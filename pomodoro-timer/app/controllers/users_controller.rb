@@ -14,10 +14,11 @@ class UsersController < ApplicationController
     p user_params
     @user.password = user_params[:password_digest]
     p @user
-      if @user.save!
+      if @user.save
         session[:user_id] = @user.id
         render :index
       else
+       p @user.errors.full_messages
         render :new
       end
   end
@@ -26,3 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password_digest, :encrypted_password)
   end
+end
