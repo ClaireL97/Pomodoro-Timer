@@ -1,3 +1,27 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.errors {
+  color: red;
+  font-size: small;
+  margin-left: 45%
+}
+
+
+
+#registration {
+  margin-left:45%;
+  padding:1em;
+  background-color: gray;
+
+
+}
+
+.form-box {
+  width: 20em;
+  font-size: medium;
+}
+
 * {
   text-align: center;
 }
@@ -12,6 +36,7 @@ div {
 }
 
 .btn {
+  display: none;
   background-color:#4c5237;
   -moz-border-radius:8px;
   -webkit-border-radius:8px;
