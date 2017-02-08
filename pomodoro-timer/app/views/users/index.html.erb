@@ -1,9 +1,1 @@
-<nav>
-  <%= @current_user %>
-  <% if @current_user != nil %>
-    <%= link_to "Logout", login_path(:current_user_id), :method => :delete %>
-  <% else %>
-    <%=link_to 'Register', new_user_path %>
-    <%=link_to 'Login', new_login_path %>
-  <% end %>
-</nav>
+
