@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, :tasks
 
   #Need to add route to home page here
 
