@@ -1,6 +1,4 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
+<%= flash[:notice] %>
 
 <%= form_for :login,  url: {action: "create"} do |f| %>
   <%= f.text_field :email, placeholder: "email" %></br>
