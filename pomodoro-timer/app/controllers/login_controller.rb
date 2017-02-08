@@ -14,14 +14,13 @@ class LoginController < ApplicationController
        p session[:current_user_id]
       redirect_to root_url
     else
+      flash[:notice] = "Invalid Email/Password Combination"
       redirect_to new_login_path
     end
   end
 
   def destroy
-    p "current user #{current_user}"
     current_user = session[:current_user_id] = nil
-    p current_user
     redirect_to root_url
   end
 
