@@ -7,8 +7,17 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+  <nav>
+    <% if session[:current_user_id] != nil %>
+      <%= link_to "Logout", login_path(:current_user_id), :method => :delete %>
+    <% else %>
+      <%=link_to 'Register', new_user_path %>
+      <%=link_to 'Login', new_login_path %>
+    <% end %>
+  </nav>
+
+
     <%= yield %>
   </body>
 </html>
