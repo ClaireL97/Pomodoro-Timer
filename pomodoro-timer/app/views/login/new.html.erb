@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-3">
+    <%= flash[:notice] %>
     <%= form_for :login,  url: {action: "create"} do |f| %>
       <%= f.label "Email" %>
       <%= f.text_field :email, :class => 'form-control' %></br>
