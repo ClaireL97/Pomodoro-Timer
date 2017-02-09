@@ -86,7 +86,7 @@ function doubleDigitify(number) {
 }
 
 function createNewTimer() {
-  $(".btn").hide();
+  $(".timer-btn").hide();
   show("start-btn");
   var times = {minutes: "25", seconds: "00"};
   timer = new jsTimer(times.minutes, times.seconds);
