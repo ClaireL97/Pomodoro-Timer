@@ -1,3 +1,5 @@
+"use_strict";
+
 var timer;
 
 $(document).ready(function(){
@@ -92,7 +94,7 @@ function createNewTimer() {
 }
 
 function playSound() {
-  var sound = $("#audio");
+  var sound = document.getElementById("audio");
   sound.play();
 }
 
