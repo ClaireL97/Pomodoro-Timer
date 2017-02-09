@@ -6,7 +6,6 @@ class LoginController < ApplicationController
   end
 
   def create
-    p "----------"
     @user = User.find_by(email: params[:login][:email])
     if @user && @user.authenticate(params[:login][:password_digest])
       session_login @user

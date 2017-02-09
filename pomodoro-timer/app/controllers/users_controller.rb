@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         session_login @user
         redirect_to root_url
       else
-       p @user.errors.full_messages
+        @user.errors.full_messages
         render :new
       end
   end
