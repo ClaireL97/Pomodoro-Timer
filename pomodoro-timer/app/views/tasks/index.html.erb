@@ -9,11 +9,13 @@
 
 <% if session[:current_user_id]%>
   <%=link_to 'Create a task', new_task_path %>
-  <h3>My Tasks</h3>
-  <ul>
-    <% @user_tasks.each do |task| %>
-      <li><%= task.submitted_task %></li>
-    <% end %>
-  </ul>
+  <div id="my-tasks">
+    <h3>My Tasks</h3>
+    <ul>
+      <% @user_tasks.each do |task| %>
+        <li><%= task.submitted_task %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
