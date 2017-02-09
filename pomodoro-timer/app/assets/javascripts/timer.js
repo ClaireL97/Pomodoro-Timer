@@ -64,7 +64,7 @@ jsTimer.prototype.updateTime = function() {
   this.minutes = doubleDigitify(this.minutes);
   this.seconds = doubleDigitify(this.seconds);
   this.centiseconds = doubleDigitify(this.centiseconds);
-  $("#countdown").html(`${this.minutes}:${this.seconds}.${this.centiseconds}`);
+  $("#countdown").html(this.minutes + ":" + this.seconds + "." + this.centiseconds);
 };
 
 jsTimer.prototype.display = function(){
@@ -72,7 +72,7 @@ jsTimer.prototype.display = function(){
     this.centiseconds--;
     if (this.timerIsDone()) {
       playSound();
-      $("#countdown").html(`Time to take a break!`);
+      $("#countdown").html("Time to take a break!");
       clearInterval(this.interval);
       $("#pause-btn").hide();
       return;
@@ -99,6 +99,6 @@ function playSound() {
 }
 
 function show(element) {
-  $(`#${element}`).css("display", "");
-  $(`#${element}`).css("visibility", "visible");
+  $("#" + element).css("display", "");
+  $("#" + element).css("visibility", "visible");
 }
