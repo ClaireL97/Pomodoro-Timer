@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user.password = user_params[:password_digest]
       if @user.save
         session[:current_user_id] = @user.id
-        render :index
+        redirect_to root_url
       else
        p @user.errors.full_messages
         render :new
