@@ -85,7 +85,8 @@ function doubleDigitify(number) {
 };
 
 function createNewTimer() {
-  timer = new jsTimer(0, 3);
-  document.getElementById("countdown").innerHTML = `00:03.00`;
+  var times = [25, 0] // Minutes/seconds
+  timer = new jsTimer(times[0], times[1]);
+  document.getElementById("countdown").innerHTML = `${times[0]}:${times[1]}.00`;
   $("#start-btn").show();
 }
