@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include SessionHelper
+
   def new
     @user = User.new
     render :new
@@ -13,10 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.password = user_params[:password_digest]
       if @user.save
-        session[:current_user_id] = @user.id
+        session_login @user
         redirect_to root_url
       else
-       p @user.errors.full_messages
+        @user.errors.full_messages
         render :new
       end
   end

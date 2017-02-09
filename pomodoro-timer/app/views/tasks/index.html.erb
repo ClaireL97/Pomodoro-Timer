@@ -7,13 +7,15 @@
   <i class="fa btn fa-play fa-2x timer-btn" id="resume-btn" aria-hidden="true"></i>
 </div>
 
-<% if session[:current_user_id]%>
+<% if session_logged_in?%>
   <%=link_to 'Create a task', new_task_path %>
-  <h3>My Tasks</h3>
-  <ul>
-    <% @user_tasks.each do |task| %>
-      <li><%= task.submitted_task %></li>
-    <% end %>
-  </ul>
+  <div id="my-tasks">
+    <h3>My Tasks</h3>
+    <ul>
+      <% @user_tasks.each do |task| %>
+        <li><%= task.submitted_task %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
