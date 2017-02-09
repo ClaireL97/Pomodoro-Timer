@@ -1,9 +1,11 @@
-<%= form_for @task do |f| %>
-  <%= f.text_field :submitted_task, placeholder: "Write a task you would like to get done!" %>
-  <%= f.submit %>
+<% if session[:current_user_id] %>
+  <%= form_for @task, url: {action: "create"} do |f| %>
+    <%= f.hidden_field :user_id, value: session[:current_user_id] %>
+    <%= f.text_field :submitted_task, placeholder: "New task" %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <%= "You must be logged in to make a task." %>
 <% end %>
-
-
-
 
 
