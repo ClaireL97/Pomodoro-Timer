@@ -1,9 +1,4 @@
-<%= form_for @task do |f| %>
-  <%= f.text_field :submitted_task, placeholder: "Write a task you would like to get done!" %>
-  <%= f.submit %>
-<% end %>
-
-
-
-
-
+  <%= form_for @task, url: {action: "create"} do |f| %>
+    <%= f.text_field :submitted_task, placeholder: "Write a task you would like to get done!" %>
+    <%= f.submit %>
+  <% end %>
