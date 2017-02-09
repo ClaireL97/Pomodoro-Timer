@@ -6,19 +6,24 @@
 }
 
 #countdown {
-    text-align: center;
-    color: #1B232F;
-    font-family: Arial, sans-serif;
-    font-size: 60px;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 100px 0 0 0;
+  text-align: center;
+  color: #1B232F;
+  font-family: Arial, sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 100px 0 0 0;
 }
 
 #reset-btn, #pause-btn, #resume-btn {
   visibility: hidden;
 }
 
+.fa, .fa:hover {
+  color: red;
+}
+
 #timer-buttons {
   text-align: center;
 }
+
