@@ -2,7 +2,7 @@
 <%= "Sign Up Date: #{(session_user.created_at).to_date.to_formatted_s(:long)}" %>
 <h3>My Tasks</h3>
 <ul>
-<% Task.where(user_id: session_user.id).each do |task| %>
-  <li><%= task.submitted_task %></li>
-<% end %>
+  <% Task.where(user_id: session_user.id).each do |task| %>
+    <li><%= task.submitted_task %></li>
+  <% end %>
 </ul>
