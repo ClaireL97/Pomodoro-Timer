@@ -71,6 +71,7 @@ jsTimer.prototype.display = function(){
   if (!this.isPaused) {
     this.centiseconds--;
     if (this.timerIsDone()) {
+      playSound();
       document.getElementById("countdown").innerHTML = `Time to take a break!`;
       clearInterval(this.interval);
       $("#pause-btn").hide();
@@ -88,4 +89,9 @@ function createNewTimer() {
   timer = new jsTimer(0, 3);
   document.getElementById("countdown").innerHTML = `00:03.00`;
   $("#start-btn").show();
+}
+
+function playSound() {
+  var sound = document.getElementById("audio");
+  sound.play()
 }

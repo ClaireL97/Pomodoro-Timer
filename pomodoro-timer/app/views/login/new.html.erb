@@ -1,7 +1,12 @@
-<%= flash[:notice] %>
-
-<%= form_for :login,  url: {action: "create"} do |f| %>
-  <%= f.text_field :email, placeholder: "email" %></br>
-  <%= f.password_field :password_digest, placeholder: "password" %></br>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <%= flash[:notice] %>
+    <%= form_for :login,  url: {action: "create"} do |f| %>
+      <%= f.label "Email" %>
+      <%= f.text_field :email, :class => 'form-control' %></br>
+      <%= f.label "Password" %>
+      <%= f.password_field :password_digest, :class => 'form-control' %></br>
+      <%= f.submit :class => "btn btn-default", value: "Log In"%>
+    <% end %>
+  </div>
+</div>
