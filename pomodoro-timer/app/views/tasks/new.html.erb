@@ -1,10 +1,11 @@
 <% if session[:current_user_id] %>
   <%= form_for @task, url: {action: "create"} do |f| %>
+    <%= f.hidden_field :user_id, value: session[:current_user_id] %>
     <%= f.text_field :submitted_task, placeholder: "New task" %>
     <%= f.submit %>
   <% end %>
 <% else %>
-     <%= "You must be logged in to make a task." %>
+  <%= "You must be logged in to make a task." %>
 <% end %>
 
 
