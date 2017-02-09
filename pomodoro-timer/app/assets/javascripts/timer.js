@@ -81,19 +81,19 @@ jsTimer.prototype.display = function(){
 
 function doubleDigitify(number) {
   return number < 10 ? "0" + parseInt(number, 10) : number;
-};
+}
 
 function createNewTimer() {
   $(".btn").hide();
   show("start-btn");
-  var times = {minutes: "25", seconds: "00"}
+  var times = {minutes: "25", seconds: "00"};
   timer = new jsTimer(times.minutes, times.seconds);
   $("#countdown").html(times.minutes + ":" + times.seconds + ".00");
 }
 
 function playSound() {
   var sound = $("#audio");
-  sound.play()
+  sound.play();
 }
 
 function show(element) {
