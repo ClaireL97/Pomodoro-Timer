@@ -62,7 +62,7 @@ jsTimer.prototype.updateTime = function() {
   this.minutes = doubleDigitify(this.minutes);
   this.seconds = doubleDigitify(this.seconds);
   this.centiseconds = doubleDigitify(this.centiseconds);
-  document.getElementById("countdown").innerHTML = `${this.minutes}:${this.seconds}.${this.centiseconds}`;
+  $("#countdown").html(`${this.minutes}:${this.seconds}.${this.centiseconds}`);
 };
 
 jsTimer.prototype.display = function(){
@@ -70,7 +70,7 @@ jsTimer.prototype.display = function(){
     this.centiseconds--;
     if (this.timerIsDone()) {
       playSound();
-      document.getElementById("countdown").innerHTML = `Time to take a break!`;
+      $("#countdown").html(`Time to take a break!`);
       clearInterval(this.interval);
       $("#pause-btn").hide();
       return;
@@ -88,15 +88,15 @@ function createNewTimer() {
   show("start-btn");
   var times = {minutes: "25", seconds: "00"}
   timer = new jsTimer(times.minutes, times.seconds);
-  document.getElementById("countdown").innerHTML = times.minutes + ":" + times.seconds + ".00";
+  $("#countdown").html(times.minutes + ":" + times.seconds + ".00");
 }
 
 function playSound() {
-  var sound = document.getElementById("audio");
+  var sound = $("#audio");
   sound.play()
 }
 
 function show(element) {
-  document.getElementById(element).style.display = "";
-  document.getElementById(element).style.visibility = "visible";
+  $(`#${element}`).css("display", "");
+  $(`#${element}`).css("visibility", "visible");
 }
