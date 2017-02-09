@@ -1,0 +1,32 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.navbar {
+  background-color: #4E4B4F;
+}
+
+#countdown {
+    text-align: center;
+    color: #1B232F;
+    font-family: Arial, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 100px 0 0 0;
+}
+
+#reset-btn, #pause-btn, #resume-btn {
+  display: none;
+}
+
+#timer-buttons {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color:#5cbf2a;
+}
+
+// .form-control {
+//   width: 40%;
+// }

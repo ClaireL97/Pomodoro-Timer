@@ -7,8 +7,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+  <nav class="navbar navbar-static-top navbar-default">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Home", root_path %></li>
+      <% if session[:current_user_id] %>
+        <li><%= link_to "#{User.find(session[:current_user_id]).username}", user_path(session[:current_user_id]) %></li>
+        <li><%= link_to "Logout", login_path(:current_user_id), :method => :delete %></li>
+      <% else %>
+        <li><%=link_to 'Register', new_user_path %></li>
+        <li><%=link_to 'Login', new_login_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+
     <%= yield %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </body>
 </html>
