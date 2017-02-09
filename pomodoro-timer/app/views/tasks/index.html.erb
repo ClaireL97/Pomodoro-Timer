@@ -7,7 +7,7 @@
   <i class="fa btn fa-play fa-2x timer-btn" id="resume-btn" aria-hidden="true"></i>
 </div>
 
-<% if session[:current_user_id]%>
+<% if session_logged_in?%>
   <%=link_to 'Create a task', new_task_path %>
   <div id="my-tasks">
     <h3>My Tasks</h3>

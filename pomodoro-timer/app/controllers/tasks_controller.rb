@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  include SessionHelper
   def show
     @task = Task.find(params[:id])
   end
@@ -14,7 +15,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @user_tasks = Task.where(user_id:  session[:current_user_id])
+    @user_tasks = session_logged_in? ? Task.where(user_id:  session_user.id) : nil
     render :index
   end
 
