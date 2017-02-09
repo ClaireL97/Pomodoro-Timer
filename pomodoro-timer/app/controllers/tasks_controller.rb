@@ -1,16 +1,11 @@
 class TasksController < ApplicationController
   def show
-    p "------------------------------------------------------------"
-    p params
-    p "------------------------------------------------------------"
     @task = Task.find(params[:id])
   end
 
   def create
-    p "@@@@@@@@@@@@@@@@@@@@"
-    @task = Task.new(params[:submitted_task])
-    # p params
-    if @task.save!
+    @task = Task.new(task_params)
+    if @task.save
       redirect_to task_path(@task.id)
     else
       redirect_to new_task_path
@@ -24,6 +19,12 @@ class TasksController < ApplicationController
   end
 
   def index
+    @user_tasks = Task.where(user_id:  session[:current_user_id])
     render :index
   end
+
+  private
+    def task_params
+      params.require(:task).permit(:user_id, :submitted_task)
+    end
 end
