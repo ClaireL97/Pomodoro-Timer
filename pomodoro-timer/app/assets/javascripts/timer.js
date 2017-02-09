@@ -8,33 +8,31 @@ $(document).ready(function(){
     timer.interval = window.setInterval( function(){ timer.display(); }, 10);
     timer.updateTime();
     $("#start-btn").hide();
-    $("#reset-btn").show();
-    $("#pause-btn").show();
+    show("reset-btn");
+    show("pause-btn");
   });
 
   $("#pause-btn").on('click', function() {
     event.preventDefault();
     timer.isPaused = true;
     $("#pause-btn").hide();
-    $("#resume-btn").show();
+    show("resume-btn");
   });
 
   $("#resume-btn").on('click', function() {
     event.preventDefault();
     timer.isPaused = false;
-    $("#pause-btn").show();
+    show("pause-btn");
     $("#resume-btn").hide();
   });
 
   $("#reset-btn").on('click', function() {
     event.preventDefault();
     clearInterval(timer.interval);
-    $("input").hide();
+    $("i").hide();
     createNewTimer();
   });
 });
-
-
 
 var jsTimer = function(minutes, seconds) {
   this.interval;
@@ -86,13 +84,19 @@ function doubleDigitify(number) {
 };
 
 function createNewTimer() {
-  var times = [25, 0] // Minutes/seconds
-  timer = new jsTimer(times[0], times[1]);
-  document.getElementById("countdown").innerHTML = `${times[0]}:${times[1]}.00`;
-  $("#start-btn").show();
+  $(".btn").hide();
+  show("start-btn");
+  var times = {minutes: "25", seconds: "00"}
+  timer = new jsTimer(times.minutes, times.seconds);
+  document.getElementById("countdown").innerHTML = times.minutes + ":" + times.seconds + ".00";
 }
 
 function playSound() {
   var sound = document.getElementById("audio");
   sound.play()
+}
+
+function show(element) {
+  document.getElementById(element).style.display = "";
+  document.getElementById(element).style.visibility = "visible";
 }

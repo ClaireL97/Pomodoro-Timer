@@ -16,17 +16,9 @@
 }
 
 #reset-btn, #pause-btn, #resume-btn {
-  display: none;
+  visibility: hidden;
 }
 
 #timer-buttons {
   text-align: center;
 }
-
-.btn:hover {
-  background-color:#5cbf2a;
-}
-
-// .form-control {
-//   width: 40%;
-// }
