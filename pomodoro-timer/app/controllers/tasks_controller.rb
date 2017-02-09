@@ -5,12 +5,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.save
-      redirect_to task_path(@task.id)
-    else
-      redirect_to new_task_path
-    end
-
+    redirect_to @task.save ? root_path : new_task_path
   end
 
   def new

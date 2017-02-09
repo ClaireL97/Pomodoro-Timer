@@ -6,12 +6,10 @@ class LoginController < ApplicationController
   end
 
   def create
+    p "----------"
     @user = User.find_by(email: params[:login][:email])
-    p params
-     p params[:login][:password_digest]
     if @user && @user.authenticate(params[:login][:password_digest])
       session[:current_user_id] = @user.id
-       p session[:current_user_id]
       redirect_to root_url
     else
       flash[:notice] = "Invalid Email/Password Combination"
