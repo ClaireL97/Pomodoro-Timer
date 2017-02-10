@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = user_params[:password_digest]
+    p @user.timer_count = 0
       if @user.save
         session_login @user
         redirect_to root_url
