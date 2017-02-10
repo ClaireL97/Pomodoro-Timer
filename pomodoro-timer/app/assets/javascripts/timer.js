@@ -80,12 +80,22 @@ jsTimer.prototype.display = function(){
     this.centiseconds--;
     if (this.timerIsDone()) {
       playSound();
-      $("#countdown").html("Time to take a break!");
+      var $countdown = $("#countdown");
+      var update_path = $countdown.data('updateUrl');
+      $countdown.html("Time to take a break!");
       clearInterval(this.interval);
       $("#pause-btn").hide();
+      if(update_path){
+        $.ajax({
+          url: update_path,
+          type: "PUT",
+          data: 1,
+        })
+      }
       return;
     }
     this.updateTime();
+
   }
 };
 
@@ -98,7 +108,7 @@ function createNewTimer() {
   show("start-btn");
   var times = {minutes: "25", seconds: "00"};
   timer = new jsTimer(times.minutes, times.seconds);
-  $("#countdown").html(times.minutes + ":" + times.seconds + ".00");
+  $("#countdown").html(doubleDigitify(times.minutes) + ":" + doubleDigitify(times.seconds) + ".00");
 }
 
 function playSound() {

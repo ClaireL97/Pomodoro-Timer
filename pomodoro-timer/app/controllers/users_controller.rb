@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = user_params[:password_digest]
+    @user.timer_count = 0
       if @user.save
         session_login @user
         redirect_to root_url
@@ -21,6 +22,17 @@ class UsersController < ApplicationController
         @user.errors.full_messages
         render :new
       end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    p @user
+    if request.xhr?
+      @user.timer_count += 1
+      @user.save
+    else
+      redirect_to root_path
+    end
   end
 
   private
