@@ -8,12 +8,12 @@
 </div>
 
 <% if session_logged_in?%>
-  <%=link_to 'Create a task', new_task_path %>
+  <%= link_to 'Create a task', new_task_path %>
   <div class="list-container">
-    <h3>Completed  Tasks</h3>
+    <h3>My  Tasks</h3>
     <ul class="task-list-group">
       <% @user_tasks.each do |task| %>
-        <li class="task-list"><%= task["submitted_task"] %></li>
+        <a class="task-list-item false-link" value="<%= task.id %>"><%= task["submitted_task"] %></a>
       <% end %>
     </ul>
   </div>

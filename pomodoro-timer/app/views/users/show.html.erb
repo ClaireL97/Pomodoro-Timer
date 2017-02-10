@@ -2,9 +2,9 @@
   <h2><%= "#{session_user.username}'s Profile" %></h2>
   <%= "Sign Up Date: #{(session_user.created_at).to_date.to_formatted_s(:long)}" %>
   <h3>My Tasks</h3>
-  <ul>
+  <ul class="task-list-group">
     <% Task.where(user_id: session_user.id).each do |task| %>
-      <li><%= task.submitted_task %></li>
+      <a class="task-list-item false-link" value="<%= task.id %>"><%= task.submitted_task %></a>
     <% end %>
   </ul>
 <% else %>
