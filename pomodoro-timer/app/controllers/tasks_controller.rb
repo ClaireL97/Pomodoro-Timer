@@ -20,10 +20,6 @@ class TasksController < ApplicationController
     render :index
   end
 
-  def destroy
-    Task.find(1)
-  end
-
   private
     def task_params
       params.require(:task).permit(:user_id, :submitted_task)
