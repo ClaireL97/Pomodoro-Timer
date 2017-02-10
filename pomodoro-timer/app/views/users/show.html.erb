@@ -5,7 +5,7 @@
   <h3>My Tasks</h3>
   <ul class="task-list-group">
     <% Task.where(user_id: session_user.id).each do |task| %>
-      <a class="task-list-item false-link" value="<%= task.id %>"><%= task.submitted_task %><%="| Created at: #{task.created_at.to_date.to_formatted_s(:long)}" %></a>
+      <a class="task-list-item false-link" data-task-id="<%= task.id %>"><%= task.submitted_task %><br><br><%= task.created_at.to_date.to_formatted_s(:long) %></a>
     <% end %>
   </ul>
 <% else %>
