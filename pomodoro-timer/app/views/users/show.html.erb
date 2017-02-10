@@ -1,0 +1,12 @@
+<% if session_logged_in? %>
+  <h2><%= "#{session_user.username}'s Profile" %></h2>
+  <%= "Sign Up Date: #{(session_user.created_at).to_date.to_formatted_s(:long)}" %>
+  <h3>My Tasks</h3>
+  <ul>
+    <% Task.where(user_id: session_user.id).each do |task| %>
+      <li><%= task.submitted_task %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <%= "You need to be logged in to see this page" %>
+<% end %>
