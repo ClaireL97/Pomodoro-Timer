@@ -1,11 +1,17 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+* {
+  text-align: center;
+}
+
 html, body {
   height: 100%;
+  width: 100%;
 }
 
 .navbar {
+  width: 100%;
   background-color: #4E4B4F;
 }
 
@@ -19,15 +25,26 @@ html, body {
   padding: 100px 0 0 0;
 }
 
-#reset-btn, #pause-btn, #resume-btn {
-  visibility: hidden;
+#reset-btn, #pause-btn, #resume-btn { visibility: hidden; }
+
+.fa, .fa:hover { color: red; }
+
+#timer-buttons { text-align: center; }
+
+.list-container {
+  height: 500px;
 }
 
-.fa, .fa:hover {
-  color: red;
+.task-list-group {
+  padding-left: 0;
+  margin: 0 auto;
+  width: 29%;
+  height: 100%;
 }
 
-#timer-buttons {
-  text-align: center;
+.task-list {
+  border: 1px solid red;
+  min-height: 75px;
+  list-style: none;
+  height: 100px;
 }
-

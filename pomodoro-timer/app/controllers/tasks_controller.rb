@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @user_tasks = session_logged_in? ? Task.where(user_id:  session_user.id) : nil
+    @user_tasks = session_logged_in? ? Task.where(user_id:  session_user.id).last(10) : nil
     render :index
   end
 
