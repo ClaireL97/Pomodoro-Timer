@@ -38,9 +38,10 @@ $(document).ready(function(){
   $(".task-list-item").on('click', function(event) {
     var $target = $(event.target);
     var taskId = $target.data('taskId');
+    var putUrl = "/tasks/" + taskId;
     $.ajax({
       type: "PUT",
-      url: `/tasks/${taskId}`,
+      url: putUrl,
       data: taskId,
       success: function(response) {
         if (response) {
