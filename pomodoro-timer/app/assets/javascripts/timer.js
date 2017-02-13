@@ -36,11 +36,20 @@ $(document).ready(function(){
   });
 
   $(".task-list-item").on('click', function(event) {
-    console.log(event.target)
-    // $.ajax({
-    //   type: "PUT",
-    //   data: event.target.textContent
-    // })
+    var $target = $(event.target);
+    var taskId = $target.data('taskId');
+    $.ajax({
+      type: "PUT",
+      url: `/tasks/${taskId}`,
+      data: taskId,
+      success: function(response) {
+        if (response) {
+          console.log("TRUE")
+        } else {
+          console.log("FALSE")
+        }
+      }
+    })
   });
 });
 

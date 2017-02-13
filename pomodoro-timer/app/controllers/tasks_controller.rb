@@ -20,6 +20,18 @@ class TasksController < ApplicationController
     render :index
   end
 
+  def update
+    task_id = params[:id].to_i
+    task = Task.find(task_id)
+    Task.update(task_id, :completed => !task.completed)
+    task = Task.find(task_id)
+    if request.xhr?
+      render json: task.completed
+    else
+      redirect_to root_path
+    end
+  end
+
   private
     def task_params
       params.require(:task).permit(:user_id, :submitted_task)

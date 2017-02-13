@@ -13,7 +13,11 @@
     <h3>My  Tasks</h3>
     <ul class="task-list-group">
       <% @user_tasks.each do |task| %>
-        <a class="task-list-item false-link" data-task-id="<%= task.id %>"><%= task["submitted_task"] %></a>
+        <% if task.completed %>
+          <a class="task-list-item task-item-complete" data-task-id="<%= task.id %>"><%= task["submitted_task"] %></a>
+        <% else %>
+          <a class="task-list-item task-item-incomplete" data-task-id="<%= task.id %>"><%= task["submitted_task"] %></a>
+        <% end %>
       <% end %>
     </ul>
   </div>

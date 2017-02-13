@@ -40,7 +40,6 @@ html, body {
 }
 
 .task-list-item {
-  border: 1px solid red;
   min-height: 75px;
   list-style: none;
   height: 100px;
@@ -49,21 +48,24 @@ html, body {
   font-weight: bold;
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
-  //
+  display: block;
   margin: 15px 0;
   padding: 15px 25px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
-  border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
-  display: block;
 }
 
-.task-list-item.complete {
+.task-item-complete {
+  //
+  background-color: #4CAF50;
+  border: none;
+  box-shadow: 0 9px #999;
+}
+
+.task-item-incomplete {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);

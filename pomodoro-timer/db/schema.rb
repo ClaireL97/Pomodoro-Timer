@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170210185746) do
   create_table "tasks", force: :cascade do |t|
     t.string   "submitted_task"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.boolean  "completed"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "completed",      default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|
