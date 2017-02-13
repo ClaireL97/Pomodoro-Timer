@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>PomodoroTimer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,16 +11,18 @@
   </head>
   <body>
     <nav class="navbar navbar-static-top navbar-default">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
-        <% if session_logged_in? %>
-          <li><%= link_to "#{session_user.username}", user_path(session_user) %></li>
-          <li><%= link_to "Logout", login_path(session_user.id), :method => :delete %></li>
-        <% else %>
-          <li><%=link_to 'Register', new_user_path %></li>
-          <li><%=link_to 'Login', new_login_path %></li>
-        <% end %>
-      </ul>
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <% if session_logged_in? %>
+            <li><%= link_to "#{session_user.username}", user_path(session_user) %></li>
+            <li><%= link_to "Logout", login_path(session_user.id), :method => :delete %></li>
+          <% else %>
+            <li><%=link_to 'Register', new_user_path %></li>
+            <li><%=link_to 'Login', new_login_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
 
     <%= yield %>

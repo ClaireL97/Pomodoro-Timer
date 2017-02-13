@@ -34,6 +34,23 @@ $(document).ready(function(){
     $("i").hide();
     createNewTimer();
   });
+
+  $(".task-list-item").on('click', function(event) {
+    var $target = $(event.target);
+    var taskId = $target.data('taskId');
+    $.ajax({
+      type: "PUT",
+      url: `/tasks/${taskId}`,
+      data: taskId,
+      success: function(response) {
+        if (response) {
+          console.log("TRUE")
+        } else {
+          console.log("FALSE")
+        }
+      }
+    })
+  });
 });
 
 var jsTimer = function(minutes, seconds) {

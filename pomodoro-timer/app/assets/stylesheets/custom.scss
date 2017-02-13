@@ -1,11 +1,18 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+* {
+  text-align: center;
+}
+
 html, body {
   height: 100%;
+  width: 100%;
+  background-color: #c6c6c6;
 }
 
 .navbar {
+  width: 100%;
   background-color: #4E4B4F;
 }
 
@@ -19,15 +26,52 @@ html, body {
   padding: 100px 0 0 0;
 }
 
-#reset-btn, #pause-btn, #resume-btn {
-  visibility: hidden;
+#reset-btn, #pause-btn, #resume-btn { visibility: hidden; }
+
+.fa, .fa:hover { color: red; }
+
+#timer-buttons { text-align: center; }
+
+.task-list-group {
+  padding-left: 0;
+  margin: 0 auto;
+  width: 29%;
+  height: 100%;
 }
 
-.fa, .fa:hover {
-  color: red;
+.task-list-item {
+  min-height: 75px;
+  list-style: none;
+  height: 100px;
+  padding: 40px 0 0 0;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  display: block;
+  margin: 15px 0;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border-radius: 15px;
 }
 
-#timer-buttons {
-  text-align: center;
+.task-item-complete {
+  //
+  background-color: #4CAF50;
+  border: none;
+  box-shadow: 0 9px #999;
 }
 
+.task-item-incomplete {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.false-link:hover, .false-link:focus {
+  text-decoration: none;
+  color: #337ab7;
+}

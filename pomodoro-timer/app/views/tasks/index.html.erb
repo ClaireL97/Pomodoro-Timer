@@ -8,12 +8,16 @@
 </div>
 
 <% if session_logged_in?%>
-  <%=link_to 'Create a task', new_task_path %>
-  <div id="my-tasks">
-    <h3>My Tasks</h3>
-    <ul>
+  <%= link_to 'Create a task', new_task_path %>
+  <div class="list-container">
+    <h3>My  Tasks</h3>
+    <ul class="task-list-group">
       <% @user_tasks.each do |task| %>
-        <li><%= task.submitted_task %></li>
+        <% if task.completed %>
+          <a class="task-list-item task-item-complete" data-task-id="<%= task.id %>"><%= task["submitted_task"] %></a>
+        <% else %>
+          <a class="task-list-item task-item-incomplete" data-task-id="<%= task.id %>"><%= task["submitted_task"] %></a>
+        <% end %>
       <% end %>
     </ul>
   </div>
