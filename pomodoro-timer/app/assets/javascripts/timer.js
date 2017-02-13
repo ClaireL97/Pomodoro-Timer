@@ -44,9 +44,11 @@ $(document).ready(function(){
       data: taskId,
       success: function(response) {
         if (response) {
-          console.log("TRUE")
+          $target.removeClass("task-item-incomplete");
+          $target.addClass("task-item-complete");
         } else {
-          console.log("FALSE")
+          $target.removeClass("task-item-complete");
+          $target.addClass("task-item-incomplete");
         }
       }
     })
