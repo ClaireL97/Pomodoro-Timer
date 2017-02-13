@@ -51,7 +51,7 @@ $(document).ready(function(){
           $target.addClass("task-item-incomplete");
         }
       }
-    })
+    });
   });
 });
 
@@ -90,10 +90,10 @@ jsTimer.prototype.display = function(){
   if (!this.isPaused) {
     this.centiseconds--;
     if (this.timerIsDone()) {
-      playSound();
       var $countdown = $("#countdown");
       var update_path = $countdown.data('updateUrl');
       $countdown.html("Time to take a break!");
+      playSound();
       clearInterval(this.interval);
       $("#pause-btn").hide();
       if(update_path){
@@ -101,7 +101,7 @@ jsTimer.prototype.display = function(){
           url: update_path,
           type: "PUT",
           data: 1,
-        })
+        });
       }
       return;
     }
