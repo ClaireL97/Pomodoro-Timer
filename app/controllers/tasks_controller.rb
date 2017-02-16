@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   end
 
   def index
+    @task = Task.new
     @user_tasks = session_logged_in? ? Task.where(user_id:  session_user.id).last(10) : nil
     @update_user_path = session_logged_in? ? "/users/#{session_user.id}" : ""
     render :index
