@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  include SessionHelper
+
   def show
     @task = Task.find(params[:id])
   end
