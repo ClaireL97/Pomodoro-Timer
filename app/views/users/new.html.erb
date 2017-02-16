@@ -11,7 +11,7 @@
         <%= f.label "Username" %>
         <%= f.text_field :username, :class => 'form-control' %>
         <%= f.label "Email" %>
-        <%= f.text_field :email, :class => 'form-control'%>
+        <%= f.email_field :email, :class => 'form-control'%>
         <%= f.label "Password" %>
         <%= f.password_field :password_digest, :class => 'form-control' %>
         <%= f.submit :class => "btn btn-default", value: "Sign Up" %>
