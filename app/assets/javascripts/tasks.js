@@ -1,4 +1,17 @@
- $(document).ready(function(){ 
+ $(document).ready(function(){
+
+  $("#new_task").on("submit",function(event){
+    event.preventDefault()
+    var data = $(event.target).serialize()
+    $.ajax({
+      type: "POST",
+      url: "/tasks",
+      data: data,
+      success: function(response){
+        $(".task-list-group").append('<a class="task-list-item task-item-incomplete" data-task-id="'+response.id+'">'+response.submitted_task+'</a>')
+      }
+    })
+  })
 
   $(".task-list-item").on('click', function(event) {
     var $target = $(event.target);

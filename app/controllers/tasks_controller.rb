@@ -6,7 +6,12 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    redirect_to @task.save ? root_path : new_task_path
+    if request.xhr?
+      @task.save
+      render json: @task
+    else
+      redirect_to root_path
+    end
   end
 
   def new
