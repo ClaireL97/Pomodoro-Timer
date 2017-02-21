@@ -8,6 +8,7 @@
       url: "/tasks",
       data: data,
       success: function(response){
+        $("#new_task")[0].reset()
         $(".task-list-group").append('<a class="task-list-item task-item-incomplete" data-task-id="'+response.id+'">'+response.submitted_task+'</a>')
       }
     })
