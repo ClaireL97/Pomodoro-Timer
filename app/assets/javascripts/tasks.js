@@ -13,7 +13,7 @@
     })
   })
 
-  $(".task-list-item").on('click', function(event) {
+  $(".task-list-group").on('click', ".task-list-item", function(event) {
     var $target = $(event.target);
     var taskId = $target.data('taskId');
     var putUrl = "/tasks/" + taskId;
