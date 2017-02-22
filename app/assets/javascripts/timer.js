@@ -106,17 +106,6 @@ jsTimer.prototype.resume = function() {
 }
 
 
-// jsTimer.prototype.decreaseTime = function() {
-//   if (this.centiseconds < 0) {
-//     this.seconds--;
-//     this.centiseconds = 99;
-//   }
-//   if (this.seconds < 0 && this.minutes !== 0) {
-//     this.minutes--;
-//     this.seconds = 59;
-//   }
-// };
-
 jsTimer.prototype.timerIsDone = function () {
   return this.remainingTimeHuman().seconds == "0" && this.remainingTimeHuman().minutes == "0";
 };
@@ -124,6 +113,7 @@ jsTimer.prototype.timerIsDone = function () {
 jsTimer.prototype.updateTime = function() {
   this.minutes = doubleDigitify(this.remainingTimeHuman().minutes);
   this.seconds = doubleDigitify(this.remainingTimeHuman().seconds);
+  document.title = (this.minutes + ":" + this.seconds)
   $("#countdown").html(this.minutes + ":" + this.seconds);
 };
 
@@ -147,7 +137,6 @@ jsTimer.prototype.display = function(){
       return;
     }
     this.updateTime();
-
   }
 };
 
@@ -158,7 +147,7 @@ function doubleDigitify(number) {
 function createNewTimer() {
   $(".timer-btn").hide();
   show("start-btn");
-  var times = {minutes: "0", seconds: "05"};
+  var times = {minutes: "25", seconds: "00"};
   timer = new jsTimer(times.minutes, times.seconds);
   $("#countdown").html(doubleDigitify(times.minutes) + ":" + doubleDigitify(times.seconds));
 }
