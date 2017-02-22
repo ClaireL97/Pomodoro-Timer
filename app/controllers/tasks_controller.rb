@@ -1,12 +1,17 @@
 class TasksController < ApplicationController
-  include SessionHelper
+
   def show
     @task = Task.find(params[:id])
   end
 
   def create
     @task = Task.new(task_params)
-    redirect_to @task.save ? root_path : new_task_path
+    if request.xhr?
+      @task.save
+      render json: @task
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -15,6 +20,7 @@ class TasksController < ApplicationController
   end
 
   def index
+    @task = Task.new
     @user_tasks = session_logged_in? ? Task.where(user_id:  session_user.id).last(10) : nil
     @update_user_path = session_logged_in? ? "/users/#{session_user.id}" : ""
     render :index

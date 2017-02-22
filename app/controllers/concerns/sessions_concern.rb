@@ -1,4 +1,7 @@
-module SessionHelper
+require 'active_support/concern'
+module SessionsConcern
+  extend ActiveSupport::Concern
+
   def session_logged_in?
     !session[:current_user_id].nil?
   end

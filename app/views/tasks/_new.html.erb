@@ -1,0 +1,8 @@
+<%= form_for @task, url: {action: "create"} do |f| %>
+  <%= f.hidden_field :user_id, value: session_user.id %>
+  <%= f.text_field :submitted_task, placeholder: "New task", required: true %>
+  <input type="submit" value="Create Task"/>
+<% end %>
+
+
+

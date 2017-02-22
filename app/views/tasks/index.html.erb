@@ -8,9 +8,9 @@
 </div>
 
 <% if session_logged_in?%>
-  <%= link_to 'Create a task', new_task_path %>
   <div class="list-container">
     <h3>My  Tasks</h3>
+    <%= render "tasks/new" %>
     <ul class="task-list-group">
       <% @user_tasks.each do |task| %>
         <% if task.completed %>

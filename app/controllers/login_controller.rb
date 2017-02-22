@@ -1,6 +1,5 @@
 class LoginController < ApplicationController
-  include SessionHelper
-  #the redirects on this page will go to the homepage (the ones going to root_url)
+
   def new
     render :new
   end
