@@ -44,16 +44,16 @@ var jsTimer = function(minutes, seconds) {
   this.isPaused = false;
 };
 
-jsTimer.prototype.decreaseTime = function() {
-  if (this.centiseconds < 0) {
-    this.seconds--;
-    this.centiseconds = 99;
-  }
-  if (this.seconds < 0 && this.minutes !== 0) {
-    this.minutes--;
-    this.seconds = 59;
-  }
-};
+// jsTimer.prototype.decreaseTime = function() {
+//   if (this.centiseconds < 0) {
+//     this.seconds--;
+//     this.centiseconds = 99;
+//   }
+//   if (this.seconds < 0 && this.minutes !== 0) {
+//     this.minutes--;
+//     this.seconds = 59;
+//   }
+// };
 
 jsTimer.prototype.timerIsDone = function () {
   return this.seconds === "00" && this.minutes === "00" && this.centiseconds === 0;
