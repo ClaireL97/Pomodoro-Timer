@@ -44,7 +44,7 @@ var jsTimer = function(minutes, seconds) {
   this.isPaused = false;
 };
 
-jsTimer.prototype.resetSeconds = function() {
+jsTimer.prototype.decreaseTime = function() {
   if (this.centiseconds < 0) {
     this.seconds--;
     this.centiseconds = 99;
@@ -60,7 +60,7 @@ jsTimer.prototype.timerIsDone = function () {
 };
 
 jsTimer.prototype.updateTime = function() {
-  this.resetSeconds();
+  this.decreaseTime();
   this.minutes = doubleDigitify(this.minutes);
   this.seconds = doubleDigitify(this.seconds);
   this.centiseconds = doubleDigitify(this.centiseconds);
