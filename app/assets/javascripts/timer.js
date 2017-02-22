@@ -160,7 +160,7 @@ function doubleDigitify(number) {
 function createNewTimer() {
   $(".timer-btn").hide();
   show("start-btn");
-  var times = {minutes: "2", seconds: "00"};
+  var times = {minutes: "25", seconds: "00"};
   timer = new jsTimer(times.minutes, times.seconds);
   $("#countdown").html(doubleDigitify(times.minutes) + ":" + doubleDigitify(times.seconds) + ".00");
 }
