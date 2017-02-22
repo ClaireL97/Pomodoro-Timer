@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 var jsTimer = function(minutes, seconds) {
   this.interval;
-  this.centiseconds = 0;
+  // this.centiseconds = 0;
   this.seconds = seconds;
   this.minutes = minutes;
   this.isPaused = true;
@@ -106,27 +106,25 @@ jsTimer.prototype.resume = function() {
 }
 
 
-jsTimer.prototype.decreaseTime = function() {
-  if (this.centiseconds < 0) {
-    this.seconds--;
-    this.centiseconds = 99;
-  }
-  if (this.seconds < 0 && this.minutes !== 0) {
-    this.minutes--;
-    this.seconds = 59;
-  }
-};
+// jsTimer.prototype.decreaseTime = function() {
+//   if (this.centiseconds < 0) {
+//     this.seconds--;
+//     this.centiseconds = 99;
+//   }
+//   if (this.seconds < 0 && this.minutes !== 0) {
+//     this.minutes--;
+//     this.seconds = 59;
+//   }
+// };
 
 jsTimer.prototype.timerIsDone = function () {
-  return this.seconds === "00" && this.minutes === "00" && this.centiseconds === 0;
+  return this.remainingTimeHuman().seconds == "0" && this.remainingTimeHuman().minutes == "0";
 };
 
 jsTimer.prototype.updateTime = function() {
-  this.decreaseTime();
-  this.minutes = doubleDigitify(this.minutes);
-  this.seconds = doubleDigitify(this.seconds);
-  this.centiseconds = doubleDigitify(this.centiseconds);
-  $("#countdown").html(this.minutes + ":" + this.seconds + "." + this.centiseconds);
+  this.minutes = doubleDigitify(this.remainingTimeHuman().minutes);
+  this.seconds = doubleDigitify(this.remainingTimeHuman().seconds);
+  $("#countdown").html(this.minutes + ":" + this.seconds);
 };
 
 jsTimer.prototype.display = function(){
@@ -160,9 +158,9 @@ function doubleDigitify(number) {
 function createNewTimer() {
   $(".timer-btn").hide();
   show("start-btn");
-  var times = {minutes: "25", seconds: "00"};
+  var times = {minutes: "0", seconds: "05"};
   timer = new jsTimer(times.minutes, times.seconds);
-  $("#countdown").html(doubleDigitify(times.minutes) + ":" + doubleDigitify(times.seconds) + ".00");
+  $("#countdown").html(doubleDigitify(times.minutes) + ":" + doubleDigitify(times.seconds));
 }
 
 function playSound() {

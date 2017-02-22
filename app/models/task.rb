@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :user
 
-  validates :submitted_task, presense: true
+  validates :submitted_task, presence: true
 end
